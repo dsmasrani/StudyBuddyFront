@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Study Buddy - Upload Keys</title>
+<link rel="stylesheet" href="styles/page.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> -->
+</head>
+<nav class="nav">
+<a href="index.html" class="nav_text">Home</a>
+<a href="about.html" class="nav_text">About</a>
+<a href="about.html" class="nav_text">Repo</a>
+<dropdown> </dropdown>
+</nav>
+<body class="body">
+    <div class="addkey-body">
+    <h1> Please Update your API Keys!</h1>
+    <form action="/action_page.php">
+        <label for="openapikey">OpenAPI Key:</label>
+        <input type="text" id="fopenapi" name="fopenapi"><br><br>
+        <label for="lname">Pinecone API Key:</label>
+        <input type="text" id="pkey" name="pkey"><br><br>
+        <label for="lname">Pinecone environment:</label>
+        <input type="text" id="penv" name="penv"><br><br>
+        <label for="lname">Pinecone Index:</label>
+        <input type="text" id="pindex" name="pindex"><br><br>
+        <input type="submit" value="Submit">
+      </form>
+    
+</body>
+</html>

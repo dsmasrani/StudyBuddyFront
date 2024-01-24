@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Study Buddy</title>
+<link rel="stylesheet" href="styles/page.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+</head>
+<nav class="nav">
+    <a href="index.html" class="nav_text">Home</a>
+    <a href="about.html" class="nav_text">About</a>
+    <a href="about.html" class="nav_text">Repo</a>
+    <a href="profile.html" class="nav_text">  Profile</a>
+    <a href="index.html" class="nav_text"> Logout</a>
+    <dropdown> </dropdown>
+</nav>
+<body class="body">
+    <div class="container">
+        <div class="addkey-body">
+            <h2>User Profile</h2>
+            <div><p>
+                <svg class="icon">
+                    <use href="/icons/profile.svg#icon-person" />
+                  </svg>
+                  Name: <span id="userName"></span> </p></div>
+            <div><p>
+                <svg class="icon">
+                    <use href="/icons/profile.svg#icon-email" />
+                  </svg>
+                Email: <span id="userEmail"></span> </p></div>
+            <div><p>
+                <svg class="icon">
+                    <use href="/icons/profile.svg#icon-openapi" />
+                  </svg>
+                  OpenAPI Key: <span id="openApiKey"> </p></span></div>
+            <div><p>
+                <svg class="icon">
+                    <use href="/icons/profile.svg#icon-pineapi" />
+                  </svg>
+                  Pinecone API Key: <span id="pineconeApiKey"> </p></span></div>
+            <div><p>
+                <svg class="icon">
+                    <use href="/icons/profile.svg#icon-pineenv" />
+                  </svg>
+                  Pinecone Environment: <span id="pineconeEnv"> </p></span></div>
+            <div><p>
+                <svg class="icon">
+                    <use href="/icons/profile.svg#icon-index" />
+                  </svg>
+                  Pinecone Index: <span id="pineconeIndex"> </p></span></div>
+            <button><a href="addkey.html">Change Keys</a></button>
+        </div>
+    </div>
+
+    <script>
+        // Example variables - replace these with actual dynamic values
+        var userName = 'John Doe';
+        var userEmail = 'john.doe@example.com';
+        var openApiKey = '12345-OPENAPI';
+        var pineconeApiKey = '67890-PINECONE';
+        var pineconeEnv = 'production';
+        var pineconeIndex = 'index1';
+
+        // Assigning the variables to the HTML elements
+        document.getElementById('userName').textContent = userName;
+        document.getElementById('userEmail').textContent = userEmail;
+        document.getElementById('openApiKey').textContent = openApiKey;
+        document.getElementById('pineconeApiKey').textContent = pineconeApiKey;
+        document.getElementById('pineconeEnv').textContent = pineconeEnv;
+        document.getElementById('pineconeIndex').textContent = pineconeIndex;
+    </script>
+</body>
+</html>
