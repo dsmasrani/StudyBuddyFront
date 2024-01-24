@@ -1,26 +1,28 @@
-.nav{
-    background-color: #fff;
-    border-bottom: 1px solid #ebeef5;
-    box-shadow: 0 1px 0 rgba(0,0,0,.03);
+.nav {
+    background-color: var(--light-background-color);
+    border-bottom: 1px solid var(--border-color-light);
+    box-shadow: 0 1px 0 var(--shadow-color);
     height: 60px;
     line-height: 60px;
     padding: 0 20px;
     position: relative;
 }
-.nav_text{
-    color: #606266;
+
+.nav_text {
+    color: var(--secondary-color);
     font-size: 16px;
     font-weight: 400;
     line-height: 1;
     text-decoration: none;
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font-family-roboto);
     position: relative;
     margin-left: 20px;
-    
 }
-.nav_text:hover{
-    color: #409eff;
+
+.nav_text:hover {
+    color: var(--primary-color);
 }
+
 .center-image {
     display: block;
     margin-left: auto;
@@ -30,134 +32,134 @@
     align-items: center;
 }
 
-.logo-text{
-    color: black;
+.logo-text {
+    color: var(--text-color-black);
     font-weight: 400;
-    font-family: "Open Sans", sans-serif;
+    font-family: var(--font-family-open-sans);
     line-height: 1;
     text-decoration: none;
-    text-align: center; /* Added property */
+    text-align: center;
 }
 
-.logo-text-subtitle{
-    color: #7d7869;
+.logo-text-subtitle {
+    color: var(--text-color-grey);
     font-size: 16px;
     font-weight: 400;
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font-family-roboto);
     line-height: 1;
     text-decoration: none;
-    text-align: center; /* Added property */
-
+    text-align: center;
 }
 
-.body{
-    background-color: #D3D3D3;
+.body {
+    background-color: var(--dark-background-color);
     margin: 0;
-    color: black;
+    color: var(--text-color-black);
 }
 
-.body h1{
-    font-family: "Open Sans", sans-serif;
+.body h1 {
+    font-family: var(--font-family-open-sans);
 }
 
-.center-text{
+.center-text {
     text-align: center;
     padding-top: 20px;
 }
 
 .google-login-button {
-    background-color: #4285F4;
-    color: white; 
+    background-color: var(--google-blue);
+    color: white;
     padding: 10px 20px;
-    border: none; 
+    border: none;
     border-radius: 2px;
     font-weight: bold;
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font-family-roboto);
     font-size: 16px;
-    display: flex; 
+    display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
     cursor: pointer;
     text-transform: uppercase;
     text-decoration: none;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
-    transition: background-color 0.3s;
-  }
-  
-  .google-login-button:hover {
-    background-color: #357ae8;
-  }
-  
-  .google-login-button img {
+    box-shadow: var(--shadow-color);
+    transition: var(--transition-bg-color);
+}
+
+.google-login-button:hover {
+    background-color: var(--google-blue-hover);
+}
+
+.google-login-button img {
     margin-right: 10px;
-  }
+}
 
-  .gbutton-container {
+.gbutton-container {
     display: flex;
-    text-decoration: none; 
-    justify-content: center; 
-  }
-  
-  .about-text {
-    text-align: left;
-    font-family: "Open Sans", sans-serif;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-  
-  .addkey p {
-    text-align: left;
-    font-family: "Open Sans", sans-serif;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
-  }
-  .addkey-body {
-    text-align: left;
-    font-family: "Open Sans", sans-serif;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
-  }
+    text-decoration: none;
+    justify-content: center;
+}
 
-  .addkey-body input {
+.about-text {
+    text-align: left;
+    font-family: var(--font-family-open-sans);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.addkey p {
+    text-align: left;
+    font-family: var(--font-family-open-sans);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.addkey-body {
+    text-align: left;
+    font-family: var(--font-family-open-sans);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.addkey-body input {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
+    box-shadow: var(--shadow-color);
     border-radius: 2px;
-  }
+}
 
-  .addkey-body button {
-    color: white; 
+.addkey-body button {
+    color: white;
     margin-top: 30px;
     padding: 10px 20px;
-    border: none; 
+    border: none;
     border-radius: 2px;
     font-weight: bold;
-    font-family: "Roboto", sans-serif;
+    font-family: var(--font-family-roboto);
     font-size: 16px;
-    display: flex; 
+    display: flex;
     justify-content: center;
     text-align: center;
     align-items: center;
     cursor: pointer;
     text-transform: uppercase;
     text-decoration: none;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.25);
-    transition: background-color 0.3s;
-  }
+    box-shadow: var(--shadow-color);
+    transition: var(--transition-bg-color);
+}
 
-  svg.icon {
+svg.icon {
     display: inline;
     height: 2.5em;
     width: 2.5em;
     vertical-align: text-top;
     fill: currentColor;
-  }
+}
