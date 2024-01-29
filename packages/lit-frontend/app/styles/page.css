@@ -1,0 +1,165 @@
+.nav {
+    background-color: var(--light-background-color);
+    border-bottom: 1px solid var(--border-color-light);
+    box-shadow: 0 1px 0 var(--shadow-color);
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    position: relative;
+}
+
+.nav_text {
+    color: var(--secondary-color);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+    text-decoration: none;
+    font-family: var(--font-family-roboto);
+    position: relative;
+    margin-left: 20px;
+}
+
+.nav_text:hover {
+    color: var(--primary-color);
+}
+
+.center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-text {
+    color: var(--text-color-black);
+    font-weight: 400;
+    font-family: var(--font-family-open-sans);
+    line-height: 1;
+    text-decoration: none;
+    text-align: center;
+}
+
+.logo-text-subtitle {
+    color: var(--text-color-grey);
+    font-size: 16px;
+    font-weight: 400;
+    font-family: var(--font-family-roboto);
+    line-height: 1;
+    text-decoration: none;
+    text-align: center;
+}
+
+.body {
+    background-color: var(--dark-background-color);
+    margin: 0;
+    color: var(--text-color-black);
+}
+
+.body h1 {
+    font-family: var(--font-family-open-sans);
+}
+
+.center-text {
+    text-align: center;
+    padding-top: 20px;
+}
+
+.google-login-button {
+    background-color: var(--google-blue);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 2px;
+    font-weight: bold;
+    font-family: var(--font-family-roboto);
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: var(--shadow-color);
+    transition: var(--transition-bg-color);
+}
+
+.google-login-button:hover {
+    background-color: var(--google-blue-hover);
+}
+
+.google-login-button img {
+    margin-right: 10px;
+}
+
+.gbutton-container {
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
+}
+
+.about-text {
+    text-align: left;
+    font-family: var(--font-family-open-sans);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.addkey p {
+    text-align: left;
+    font-family: var(--font-family-open-sans);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.addkey-body {
+    text-align: left;
+    font-family: var(--font-family-open-sans);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.addkey-body input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    box-shadow: var(--shadow-color);
+    border-radius: 2px;
+}
+
+.addkey-body button {
+    color: white;
+    margin-top: 30px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 2px;
+    font-weight: bold;
+    font-family: var(--font-family-roboto);
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: var(--shadow-color);
+    transition: var(--transition-bg-color);
+}
+
+svg.icon {
+    display: inline;
+    height: 2.5em;
+    width: 2.5em;
+    vertical-align: text-top;
+    fill: currentColor;
+}
