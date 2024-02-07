@@ -6,14 +6,11 @@
 <link rel="stylesheet" href="styles/page.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+<script type="module" src="./drop-down.ts"></script>
+<script type="module" src="./nav-bar.ts"></script>
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> -->
 </head>
-<nav class="nav">
-<a href="index.html" class="nav_text">Home</a>
-<a href="about.html" class="nav_text">About</a>
-<a href="about.html" class="nav_text">Repo</a>
-<dropdown> </dropdown>
-</nav>
+<nav-bar></nav-bar>
 <body class="body">
     <div class="addkey-body">
     <h1> Please Update your API Keys!</h1>
@@ -28,6 +25,7 @@
         <input type="text" id="pindex" name="pindex"><br><br>
         <input type="submit" value="Submit">
       </form>
+      </div>
     
 </body>
 </html>

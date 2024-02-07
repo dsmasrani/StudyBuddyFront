@@ -44,6 +44,7 @@ class DropDownElement extends LitElement {
     loggedIn = this.getLoggedInCookie();
 
     render() {
+        console.log(this.loggedIn)
         const dynamicName = "Dev Masrani"; // Replace "Dynamic Name" with your variable that holds the updated name
         let menuItems;
         if (this.loggedIn) {
@@ -54,9 +55,10 @@ class DropDownElement extends LitElement {
             `;
         } else {
             menuItems = html`
-                <li name="box"><a href="chat.html">Log In</a></li>
+                <li name="box" @click="${() => { this.setLoggedInCookie(true); location.reload(); }}"><a href="">Log In</a></li>
             `;
         }
+
         const toggleMode = () => {
             this.mode = "hello";
             toggle();

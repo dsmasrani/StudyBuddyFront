@@ -17,6 +17,9 @@ class CardElement extends LitElement {
     @property({ reflect: true, type: String })
     viewMode = "card"; // Default view mode
 
+    @property({ reflect: true, type: String })
+    description = "lorem ipsum dolor"; // Default view mode
+
     render() {
         // Conditional rendering based on viewMode
         return html`
@@ -49,7 +52,7 @@ class CardElement extends LitElement {
                 <div class="text-content">
                     <h2>${title}</h2>
                     <h3>${this.subtitles[index]}</h3>
-                    <p>Content for ${title}</p>
+                    <p>${this.description[index]}</p>
                 </div>
             </div>
         `)}`;
@@ -63,7 +66,7 @@ class CardElement extends LitElement {
                 <div>
                     <h2>${title}</h2>
                     <h3>${this.subtitles[index]}</h3>
-                    <p>Content for ${title}</p>
+                    <p>${this.description[index]}</p>
                 </div>
             </div>
         `)}`;
@@ -96,6 +99,7 @@ class CardElement extends LitElement {
         .list {
             flex-direction: column;
             align-items: center;
+            width: 200px;
         }
         .list-image {
             margin-bottom: 20px;
@@ -109,6 +113,7 @@ class CardElement extends LitElement {
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 400px;
         }
         button {
             cursor: pointer;
@@ -116,7 +121,7 @@ class CardElement extends LitElement {
             margin: 0 5px;
             border: none;
             border-radius: 5px;
-            background-color: #007bff; /* Bootstrap primary color */
+            background-color: var(--button-color); /* Bootstrap primary color */
             color: var(--light-background-color);
             font-family: var(--font-family-roboto);
             font-size: 16px;
@@ -128,7 +133,7 @@ class CardElement extends LitElement {
         }
     
         button:hover {
-            background-color: #0056b3; /* A darker shade for hover effect */
+            background-color: var(--button-color-hover); /* A darker shade for hover effect */
         }
     
         /* Style for Font Awesome icons */

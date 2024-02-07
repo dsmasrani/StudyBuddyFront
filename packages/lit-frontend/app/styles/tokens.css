@@ -10,6 +10,8 @@
     --text-color-grey: #7d7869;
     --border-color-light: #ebeef5;
     --shadow-color: rgba(0,0,0,0.25);
+    --button-color: #007bff;
+    --button-color-hover: #0056b3;
 
     /* Font Families */
     --font-family-roboto: "Roboto", sans-serif;

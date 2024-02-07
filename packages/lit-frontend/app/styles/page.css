@@ -139,14 +139,22 @@
     border-radius: 2px;
 }
 
+.addkey-body > a {
+    text-decoration: none;
+    color: var(--light-background-color);
+    font-family: var(--font-family-roboto);
+
+}
+
 .addkey-body button {
-    color: white;
+    color: var(--light-background-color);
     margin-top: 30px;
     padding: 10px 20px;
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
     font-weight: bold;
     font-family: var(--font-family-roboto);
+    transition: background-color 0.3s ease;
     font-size: 16px;
     display: flex;
     justify-content: center;
@@ -157,7 +165,12 @@
     text-decoration: none;
     box-shadow: var(--shadow-color);
     transition: var(--transition-bg-color);
+    background-color: var(--button-color);
 }
+.addkey-body button:hover {
+    background-color: var(--button-color-hover);
+}
+
 
 svg.icon {
     display: inline;
