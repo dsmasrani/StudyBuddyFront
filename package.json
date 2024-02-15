@@ -1,0 +1,22 @@
+{
+  "name": "studybuddyfront",
+  "version": "1.0.0",
+  "description": "The front-end for studdybuddy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dsmasrani/StudyBuddyFront.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dsmasrani/StudyBuddyFront/issues"
+  },
+  "homepage": "https://github.com/dsmasrani/StudyBuddyFront#readme",
+  "workspaces": [
+      "packages/*"
+  ]
+}

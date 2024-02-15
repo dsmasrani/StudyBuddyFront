@@ -8,24 +8,13 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
 <script type="module" src="./drop-down.ts"></script>
 <script type="module" src="./nav-bar.ts"></script>
+<script type="module" src="./edit-profile.ts"></script>
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> -->
 </head>
 <nav-bar></nav-bar>
 <body class="body">
-    <div class="addkey-body">
     <h1> Please Update your API Keys!</h1>
-    <form action="/action_page.php">
-        <label for="openapikey">OpenAPI Key:</label>
-        <input type="text" id="fopenapi" name="fopenapi"><br><br>
-        <label for="lname">Pinecone API Key:</label>
-        <input type="text" id="pkey" name="pkey"><br><br>
-        <label for="lname">Pinecone environment:</label>
-        <input type="text" id="penv" name="penv"><br><br>
-        <label for="lname">Pinecone Index:</label>
-        <input type="text" id="pindex" name="pindex"><br><br>
-        <input type="submit" value="Submit">
-      </form>
-      </div>
-    
+    <user-profile-edit path="/updateProfile/dsmasrani@gmail.com/3"></user-profile-edit>
+    </div>
 </body>
 </html>

@@ -26,7 +26,7 @@
 <p>Get Started</p>
 <div class="gbutton-container">
     <a href="chat.html">
-    <button class="google-login-button">
+    <button class="google-login-button" onclick="setLoggedInCookie(true)">
         <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google logo" />
         Login with Google
     </button>
@@ -34,4 +34,12 @@
 </div>
 </div>
 </body>
+<script>
+    function setLoggedInCookie(loggedIn) {
+    const d = new Date();
+    d.setTime(d.getTime() + (7*24*60*60*1000)); // Expires in 7 days
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = "loggedIn=" + loggedIn + ";" + expires + ";path=/";
+    }
+</script>
 </html>
