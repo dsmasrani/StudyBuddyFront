@@ -1,6 +1,7 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-
+import { Oauth, updateOauth } from "./global";
+import { createClient } from '@supabase/supabase-js'
 // const toggleSwitch = 
 //     document.querySelector('.theme-slider input[type="checkbox"]'); 
 
@@ -13,7 +14,9 @@ function toggle() {
     }
 }
     // toggleSwitch.addEventListener('change', toggle, false);
-
+    const supabaseUrl = 'https://jazhnnpcpkklxhxdlprw.supabase.co'
+    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImphemhubnBjcGtrbHhoeGRscHJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTcwOTUwMjcsImV4cCI6MjAxMjY3MTAyN30.0yYa_VFJoouSTex7uot0jL4xWuBLV6c99WBFk2J7zN4'
+    const supabase = createClient(supabaseUrl, supabaseKey)
 @customElement("drop-down")
 class DropDownElement extends LitElement {
     @property({ reflect: true, type: Boolean })
@@ -41,21 +44,54 @@ class DropDownElement extends LitElement {
         let expires = "expires="+ d.toUTCString();
         document.cookie = "loggedIn=" + loggedIn + ";" + expires + ";path=/";
     }
+    async loginWithGoogle() {
+        console.log('loginWithGoogle')
+        updateOauth(true);
+        console.log('Oauth', Oauth);
+        console.log("this is running");
+        const { data, error } = await supabase.auth.signInWithOAuth({
+            provider: 'google',
+            options: {
+                redirectTo: 'http://localhost:5173/app/chat.html'
+            }
+        });
+        console.log(data);
+        // Make data a global variable
+        this.setLoggedInCookie(true)
+    }
+    async logout() {
+        const { error } = await supabase.auth.signOut()
+        this.setLoggedInCookie(false)
+        updateOauth(false)
+    }
+    async getSession(){
+        var { data, error } = await supabase.auth.getSession()
+        return data
+    }
+    //loggedIn = Oauth;
     loggedIn = this.getLoggedInCookie();
-
+    data = this.getSession();
+    dynamicName = ""; // Replace "Dynamic Name" with your variable that holds the updated name
     render() {
-        console.log(this.loggedIn)
-        const dynamicName = "Dev Masrani"; // Replace "Dynamic Name" with your variable that holds the updated name
+        console.log('data', this.data);
+        console.log('Oauth',Oauth)
+        this.data.then(data => {
+            const fullName = data.session?.user.user_metadata.full_name;
+            console.log(fullName);
+            this.dynamicName = fullName;});
+        //console.log(this.data)
+        //this.loggedIn = Oauth;
+        //console.log(this.loggedIn)
         let menuItems;
         if (this.loggedIn) {
             menuItems = html`
-                <li name="box"><a href="profile.html">${dynamicName}</a></li>
+                <li name="box"><a href="profile.html">${this.dynamicName}</a></li>
                 <li name="box"><a href="addkey.html">Change Keys</a></li>
-                <li name="box" @click="${this.setLoggedInCookie(false)}"><a href="index.html">Log Out</a></li>
+                <li name="box" @click=""><a href="index.html">Log Out</a></li>
             `;
         } else {
             menuItems = html`
-                <li name="box" @click="${() => { this.setLoggedInCookie(true); location.reload(); }}"><a href="">Log In</a></li>
+                <li name="box" @click="${() => { this.loginWithGoogle(); location.reload(); }}"><a href="">Log In</a></li>
             `;
         }
 
@@ -63,6 +99,7 @@ class DropDownElement extends LitElement {
             this.mode = "hello";
             toggle();
         }
+
         return html`
             <input
                 type="checkbox"

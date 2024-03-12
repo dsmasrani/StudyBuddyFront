@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
 <script type="module" src="./drop-down.ts"></script>
 <script type="module" src="./nav-bar.ts"></script>
+<script type="module" src="./google-sso.ts"></script>
 <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> -->
 </head>
     <nav-bar></nav-bar>
@@ -19,12 +20,8 @@
 <div class="center-text">
 <p>Get Started</p>
 <div class="gbutton-container">
-    <a href="chat.html">
-    <button class="google-login-button" onclick="setLoggedInCookie(true)">
-        <img src="https://fonts.gstatic.com/s/i/productlogos/googleg/v6/24px.svg" alt="Google logo" />
-        Login with Google
-    </button>
-    </a>
+    <google-sso>
+    </google-sso>
 </div>
 </div>
 </body>

@@ -12,10 +12,11 @@ export class UserProfileEditElement extends LitElement {
     @state()
     profile?: Profile;
 
+    success: string = "";
     render() {
     return html`
     <div class="addkey-body">
-    <form @submit=${this._handleSubmit}>
+      <form @submit=${this._handleSubmit}>
         <label for="openapikey">OpenAPI Key:</label>
         <input type="text" id="openai_key" name="openai_key"><br><br>
         <label for="lname">Pinecone API Key:</label>
@@ -25,11 +26,22 @@ export class UserProfileEditElement extends LitElement {
         <label for="lname">Pinecone Index:</label>
         <input type="text" id="index_name" name="index_name"><br><br>
         <button type="submit">Submit</button>
-    </form> 
+        ${this.success !== "" ? html`<p class="success">${this.success}</p>` : ''}
+      </form> 
     </div>`;
     }
 
   static styles = css`
+  .success{
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: green;
+    color: white;
+  }
+  
   .addkey p {
     text-align: left;
     font-family: var(--font-family-open-sans);
@@ -111,8 +123,12 @@ export class UserProfileEditElement extends LitElement {
       body: JSON.stringify(json)
     })
       .then((response) => {
-        if (response.status === 200) return response.json();
-        else return null;
+        if (response.status === 200 || response.status === 201){
+          this.success="Values updated successfully";
+          return response.json();
+        } else {
+          return null;
+        }
       })
       .then((json: unknown) => {
         if (json) this.profile = json as Profile;
