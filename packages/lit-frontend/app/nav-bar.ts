@@ -1,6 +1,6 @@
 import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
-
+import { API } from "./api";
 // const toggleSwitch = 
 //     document.querySelector('.theme-slider input[type="checkbox"]'); 
 
@@ -12,11 +12,14 @@ function toggle() {
         body.classList.add('dark_mode');
     }
 }
-    // toggleSwitch.addEventListener('change', toggle, false);
 
+    // toggleSwitch.addEventListener('change', toggle, false);
 @customElement("nav-bar")
 class NavBarElement extends LitElement {
-
+    async getDynamicName() {
+        return API.getDynamicName();
+    }
+    dynamicName = "";
     render() {
         return html`
         <nav class="nav">

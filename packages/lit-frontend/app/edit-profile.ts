@@ -3,6 +3,7 @@ import { css, html, LitElement } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { Profile } from "./profile";
 import { serverPath } from "./root";
+import { API } from "./api";
 
 @customElement("user-profile-edit")
 export class UserProfileEditElement extends LitElement {
@@ -117,24 +118,26 @@ export class UserProfileEditElement extends LitElement {
 
   _putData(json: Profile) {
     console.log(serverPath(this.path))
-    fetch(serverPath(this.path), {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(json)
+    API.getUserID().then((id) => {
+      fetch(serverPath(this.path), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(json)
+      })
+        .then((response) => {
+          if (response.status === 200 || response.status === 201){
+            this.success="Values updated successfully";
+            return response.json();
+          } else {
+            return null;
+          }
+        })
+        .then((json: unknown) => {
+          if (json) this.profile = json as Profile;
+        })
+        .catch((err) =>
+          console.log("Failed to PUT form data", err)
+        );
     })
-      .then((response) => {
-        if (response.status === 200 || response.status === 201){
-          this.success="Values updated successfully";
-          return response.json();
-        } else {
-          return null;
-        }
-      })
-      .then((json: unknown) => {
-        if (json) this.profile = json as Profile;
-      })
-      .catch((err) =>
-        console.log("Failed to PUT form data", err)
-      );
   }
 }

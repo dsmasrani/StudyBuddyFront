@@ -7,7 +7,7 @@ import { API } from "./api";
 @customElement("chat-gpt")
 export class ChatGPT extends LitElement {
     @property({ type: Array })
-    messages: string[] = [];
+    messages: [string,string][] = [];
 
     @property({ type: Boolean})
     isPending = false;
@@ -29,7 +29,7 @@ export class ChatGPT extends LitElement {
             <div class="chat-context" id="chat-data">
             ${
                 this.messages.map((message, ind) => {
-                    return html`<p class="chat-msg ${ind%2 === 0? 'user-msg': 'api-msg'}">${message}</p>`;
+                    return html`<p class="chat-msg ${ind%2 === 0? 'user-msg': 'api-msg'}">${ind%2 === 0? message[0] : message[0]}</p> ${ind%2 === 1? html`<p class="chat-msg api-msg">${message[1]}</p>` : ''}`;
                 })
             }
             ${
@@ -56,7 +56,7 @@ export class ChatGPT extends LitElement {
     query(e) {
         
         e.preventDefault();
-        this.messages = [...this.messages, this.prompt];
+        this.messages = [...this.messages, [this.prompt, ""]];
         
         this.isPending = true;
         this.dotHandler();
@@ -67,7 +67,7 @@ export class ChatGPT extends LitElement {
     handleResponse(response) {
         console.log(response);
         this.isPending = false;
-        this.messages = [...this.messages, response.answer + "Sources: " + response.sources];
+        this.messages = [...this.messages, [response.answer, "Sources: " + response.sources]];
         var objDiv = this.shadowRoot.getElementById("chat-data") as HTMLElement;
         objDiv.scrollTo(0, objDiv.scrollHeight);
     }
@@ -115,6 +115,14 @@ export class ChatGPT extends LitElement {
             width: fit-content;
             border-radius: 10px;
             padding: 10px;
+            color: white;
+        }
+        .src-msg {
+            max-width: 80%;
+            width: fit-content;
+            border-radius: 10px;
+            padding-top: -10px;
+            padding-bottom: 10px;
             color: white;
         }
         .chat-context {

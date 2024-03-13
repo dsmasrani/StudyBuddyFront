@@ -2,6 +2,7 @@ import { css, html, LitElement } from "lit";
 import { customElement, property } from "lit/decorators.js";
 import { Oauth, updateOauth } from "./global";
 import { createClient } from '@supabase/supabase-js'
+import { API } from "./api";
 // const toggleSwitch = 
 //     document.querySelector('.theme-slider input[type="checkbox"]'); 
 
@@ -14,9 +15,6 @@ function toggle() {
     }
 }
     // toggleSwitch.addEventListener('change', toggle, false);
-    const supabaseUrl = 'https://jazhnnpcpkklxhxdlprw.supabase.co'
-    const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImphemhubnBjcGtrbHhoeGRscHJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTcwOTUwMjcsImV4cCI6MjAxMjY3MTAyN30.0yYa_VFJoouSTex7uot0jL4xWuBLV6c99WBFk2J7zN4'
-    const supabase = createClient(supabaseUrl, supabaseKey)
 @customElement("drop-down")
 class DropDownElement extends LitElement {
     @property({ reflect: true, type: Boolean })
@@ -44,7 +42,7 @@ class DropDownElement extends LitElement {
         let expires = "expires="+ d.toUTCString();
         document.cookie = "loggedIn=" + loggedIn + ";" + expires + ";path=/";
     }
-    async loginWithGoogle() {
+    /**async loginWithGoogle() {
         console.log('loginWithGoogle')
         updateOauth(true);
         console.log('Oauth', Oauth);
@@ -67,26 +65,33 @@ class DropDownElement extends LitElement {
     async getSession(){
         var { data, error } = await supabase.auth.getSession()
         return data
+    }**/
+    
+    async getDynamicName() {
+        const supabase = API.getClient();
+        console.log(await supabase.auth.getSession());
+        return API.getDynamicName();
     }
+
     //loggedIn = Oauth;
     loggedIn = this.getLoggedInCookie();
-    data = this.getSession();
     dynamicName = ""; // Replace "Dynamic Name" with your variable that holds the updated name
     render() {
-        console.log('data', this.data);
-        console.log('Oauth',Oauth)
-        this.data.then(data => {
-            const fullName = data.session?.user.user_metadata.full_name;
-            console.log(fullName);
-            this.dynamicName = fullName;});
+        //console.log('data', this.data);
+        console.log('Oauth', Oauth);
+        this.getDynamicName().then((name) => {
+            this.dynamicName = name;
+        });
         //console.log(this.data)
         //this.loggedIn = Oauth;
         //console.log(this.loggedIn)
         let menuItems;
-        if (this.loggedIn) {
+        if (this.dynamicName) {
             menuItems = html`
                 <li name="box"><a href="profile.html">${this.dynamicName}</a></li>
-                <li name="box"><a href="addkey.html">Change Keys</a></li>
+                <li name="box"><a href="chat.html">${this.dynamicName? "Chat" : ""}</a></li>
+                <li name="box"><a href="upload.html">${this.dynamicName? "Upload File" : ""}</a></li>
+                <li name="box"><a href="addkey.html">${this.dynamicName? "Change Keys" : ""}</a></li>
                 <li name="box" @click=""><a href="index.html">Log Out</a></li>
             `;
         } else {

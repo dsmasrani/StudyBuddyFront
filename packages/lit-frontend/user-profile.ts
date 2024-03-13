@@ -3,7 +3,7 @@ import { css, html, LitElement } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { Profile } from "./app/profile";
 import { serverPath } from "./app/root";
-
+import { API } from "./app/api";
 @customElement("user-profile")
 export class UserProfileElement extends LitElement {
   @property({reflect: true, type: String})
@@ -12,8 +12,14 @@ export class UserProfileElement extends LitElement {
   @state()
   profile?: Profile;
 
-  _fetchData(path: string) {
-    fetch(serverPath(path))
+  async getUserID() {
+    return this.path + '/' + API.getUserID();
+  }
+
+  async _fetchData(path: string) {
+    const userId = await this.getUserID();
+    alert(userId);
+    fetch(serverPath(userId))
       .then((response) => {
         if (response.status === 200) {
           return response.json();

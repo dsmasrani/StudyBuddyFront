@@ -3,6 +3,7 @@ import { css, html, LitElement } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { Profile } from "./profile";
 import { serverPath } from "./root";
+import { API } from "./api";
 
 @customElement("user-profile")
 export class UserProfileElement extends LitElement {
@@ -12,17 +13,24 @@ export class UserProfileElement extends LitElement {
   @state()
   profile?: Profile;
 
+  async getUserID() {
+    return 0 }
+
   _fetchData(path: string) {
-    fetch(serverPath(path))
+    API.getUserID().then((id) => {
+      path = this.path + '/' + id;
+      fetch(serverPath(path))
       .then((response) => {
         if (response.status === 200) {
           return response.json();
+        } else {
+          alert("No Keys Found, Please Enter some Keys");
         }
-        return null;
       })
       .then((json: unknown) => {
           if (json) this.profile = json as Profile;
       });
+    });
   }
 
   // in class UserProfileElement
