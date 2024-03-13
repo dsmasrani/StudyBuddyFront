@@ -1,16 +1,26 @@
 import { createClient } from '@supabase/supabase-js'
 import { serverPath } from './root'
+import dotenv from 'dotenv';
+const supabaseUrl: string = '...';
+const supabaseKey: string = '...';
+const ACCESS_TOKEN = '...';
 
-const supabaseUrl = 'https://jazhnnpcpkklxhxdlprw.supabase.co'
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImphemhubnBjcGtrbHhoeGRscHJ3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2OTcwOTUwMjcsImV4cCI6MjAxMjY3MTAyN30.0yYa_VFJoouSTex7uot0jL4xWuBLV6c99WBFk2J7zN4'
-const supabase = createClient(supabaseUrl, supabaseKey)
-
-const ACCESS_TOKEN = 'studybuddy380y2hriwnf';
+const supabase = createClient(supabaseUrl, supabaseKey);
 
 export class API {
+    static getClient() {
+        return supabase;
+    }
 
+    static async getDynamicKey() {
+        const response = await supabase.auth.getSession()
+        return response.data.session?.user.email;
+    }
+    static async getDynamicName() {
+        const response = await supabase.auth.getSession()
+        return response.data.session?.user.user_metadata.full_name;
+    }
     static async getUserID() {
-        return '68b989ec-7eec-49c0-8f8d-52b01357c0fd';
         const response = await supabase.auth.getSession()
         return response.data.session?.user.id;
         // .then(response => {
@@ -24,7 +34,7 @@ export class API {
             headers: { 
                 "Access-Control-Allow-Origin": "*",
                 "Accept": "*/*",
-                "access_token": "studybuddy380y2hriwnf"
+                "access_token": ACCESS_TOKEN
             }
           })
         responseHandler(await response.json());
