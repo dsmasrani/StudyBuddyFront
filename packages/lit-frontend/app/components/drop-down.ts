@@ -88,11 +88,11 @@ class DropDownElement extends LitElement {
         let menuItems;
         if (this.dynamicName) {
             menuItems = html`
-                <li name="box"><a href="profile.html">${this.dynamicName}</a></li>
-                <li name="box"><a href="chat.html">${this.dynamicName? "Chat" : ""}</a></li>
-                <li name="box"><a href="upload.html">${this.dynamicName? "Upload File" : ""}</a></li>
-                <li name="box"><a href="addkey.html">${this.dynamicName? "Change Keys" : ""}</a></li>
-                <li name="box" @click=""><a href="index.html">Log Out</a></li>
+                <li name="box"><a href="/profile">${this.dynamicName}</a></li>
+                <li name="box"><a href="/chat">${this.dynamicName? "Chat" : ""}</a></li>
+                <li name="box"><a href="/upload">${this.dynamicName? "Upload File" : ""}</a></li>
+                <li name="box"><a href="/add-keys">${this.dynamicName? "Change Keys" : ""}</a></li>
+                <li name="box" @click=""><a href="/">Log Out</a></li>
             `;
         } else {
             menuItems = html`

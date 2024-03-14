@@ -7,7 +7,7 @@ import { API } from "./api";
 @customElement("chat-gpt")
 export class ChatGPT extends LitElement {
     @property({ type: Array })
-    messages: [string,string][] = [];
+    messages: string[][] = [];
 
     @property({ type: Boolean})
     isPending = false;
@@ -28,8 +28,12 @@ export class ChatGPT extends LitElement {
             <div class="chat-box">
             <div class="chat-context" id="chat-data">
             ${
-                this.messages.map((message, ind) => {
-                    return html`<p class="chat-msg ${ind%2 === 0? 'user-msg': 'api-msg'}">${ind%2 === 0? message[0] : message[0]}</p> ${ind%2 === 1? html`<p class="chat-msg api-msg">${message[1]}</p>` : ''}`;
+                this.messages.map((messageList, ind) => {
+                    return messageList.map((message) => {
+                        return html`<p class="chat-msg ${ind%2 === 0? 'user-msg': 'api-msg'}">
+                            ${message}
+                        </p>`
+                    });
                 })
             }
             ${
@@ -56,8 +60,8 @@ export class ChatGPT extends LitElement {
     query(e) {
         
         e.preventDefault();
-        this.messages = [...this.messages, [this.prompt, ""]];
-        
+        this.messages = [...this.messages, [this.prompt]];
+        console.log(this.messages);
         this.isPending = true;
         this.dotHandler();
         API.chat(this.prompt, (response) => this.handleResponse(response))

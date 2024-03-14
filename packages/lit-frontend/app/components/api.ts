@@ -1,9 +1,9 @@
 import { createClient } from '@supabase/supabase-js'
 import { serverPath } from './root'
 import dotenv from 'dotenv';
-const supabaseUrl: string = '...';
-const supabaseKey: string = '...';
-const ACCESS_TOKEN = '...';
+const supabaseUrl: string = '';
+const supabaseKey: string = '';
+const ACCESS_TOKEN = '';
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 

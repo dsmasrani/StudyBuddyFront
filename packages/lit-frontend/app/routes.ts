@@ -14,7 +14,7 @@ export default [
     component: "about-view"
   },
   {
-    path: "/addKeys",
+    path: "/add-keys",
     component: "addkey-view"
   },
   {

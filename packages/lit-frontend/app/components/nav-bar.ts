@@ -24,9 +24,9 @@ class NavBarElement extends LitElement {
     render() {
         return html`
             <nav class="nav">
-                <a href="index.html" class="nav_text">Home</a>
-                <a href="about.html" class="nav_text">About</a>
-                <a href="about.html" class="nav_text">Repo</a>
+                <a href="/" class="nav_text">Home</a>
+                <a href="/about" class="nav_text">About</a>
+                <a href="https://github.com/dsmasrani/StudyBuddyFront" class="nav_text">Repo</a>
                 <drop-down></drop-down>
             </nav>
         `;
