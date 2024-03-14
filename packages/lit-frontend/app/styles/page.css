@@ -54,13 +54,13 @@
     text-align: center;
 }
 
-.body {
+body {
     background-color: var(--dark-background-color);
     margin: 0;
     color: var(--text-color-black);
 }
 
-.body h1 {
+body h1 {
     font-family: var(--font-family-open-sans);
 }
 

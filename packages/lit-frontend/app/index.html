@@ -1,36 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Study Buddy</title>
-<link rel="stylesheet" href="styles/tokens.css">
-<link rel="stylesheet" href="styles/page.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
-<script type="module" src="./drop-down.ts"></script>
-<script type="module" src="./nav-bar.ts"></script>
-<script type="module" src="./google-sso.ts"></script>
-<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"> -->
-</head>
-    <nav-bar></nav-bar>
-<body class="body">
-<img class="center-image" src="img/logo_no_text.png" alt="Study Buddy Logo">
-<h1 class="logo-text">StudyBuddy</h1>
-<h3 class="logo-text-subtitle">Add .pdf support for any PDF to ChatGPT with information citing</h3>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/resetcss">
+    <link rel="stylesheet" href="./styles/tokens.css">
+    <link rel="stylesheet" href="./styles/page.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+    <title>StudyBuddy</title>
 
-<div class="center-text">
-<p>Get Started</p>
-<div class="gbutton-container">
-    <google-sso>
-    </google-sso>
-</div>
-</div>
+    <script type="module" src="./views/studybuddy-app.ts"></script>
+</head>
+<body>
+    <studybuddy-app></studybuddy-app>
 </body>
-<script>
-    function setLoggedInCookie(loggedIn) {
-    const d = new Date();
-    d.setTime(d.getTime() + (7*24*60*60*1000)); // Expires in 7 days
-    let expires = "expires="+ d.toUTCString();
-    document.cookie = "loggedIn=" + loggedIn + ";" + expires + ";path=/";
-    }
-</script>
 </html>
